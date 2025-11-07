@@ -1,0 +1,24 @@
+# --- Core ---
+python-dotenv==1.0.1
+requests==2.32.3
+
+# LLMs / OpenAI
+openai==1.47.0
+
+# Vector DB
+chromadb==0.5.5
+
+# Data processing
+pandas==2.2.3
+numpy==1.26.4
+python-docx==1.1.2
+
+# Backend API
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+
+# Frontend UI
+streamlit==1.39.0
+
+# Optional (reports / nice-to-have)
+reportlab==4.2.2

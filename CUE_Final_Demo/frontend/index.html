@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CUE Insights Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">CUE</div>
+        <div class="subtitle">Customer Understanding Engine</div>
+      </div>
+
+      <div class="field">
+        <label for="account-select">Choose account</label>
+        <select id="account-select"></select>
+      </div>
+
+      <button id="btn-generate" class="primary-btn">Generate / Refresh Brief</button>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Summary</div>
+        <div class="sidebar-stat-label">Risk</div>
+        <div id="summary-risk" class="pill pill-muted">—</div>
+
+        <div class="sidebar-stat-label">Guardrails</div>
+        <div id="summary-guardrails" class="pill pill-muted">—</div>
+
+        <div class="sidebar-stat-label">Coverage</div>
+        <div id="summary-coverage" class="pill pill-muted">—</div>
+      </div>
+
+      <div class="sidebar-note">
+        All bullets require citations. Guardrails enforce schema, consistency checks, and stub PII checks.
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+      <!-- Tabs -->
+      <div class="tabs">
+        <button id="tab-brief" class="tab active">📄 Brief</button>
+        <button id="tab-trends" class="tab">📊 Trends</button>
+      </div>
+
+      <!-- Brief view -->
+      <section id="brief-view">
+        <header class="page-header">
+          <div>
+            <h1>CUE — Signal Unification & Citable Summaries (Iteration 3)</h1>
+            <div id="brief-title" class="page-subtitle">
+              Select an account to generate a 30-day brief.
+            </div>
+          </div>
+          <div id="brief-risk-pill" class="risk-pill risk-pill-none">Risk: —</div>
+        </header>
+
+        <div class="grid">
+          <!-- Highlights -->
+          <div class="card">
+            <div class="card-header">
+              <span class="card-icon">📈</span>
+              <h2>Highlights</h2>
+            </div>
+            <ul id="highlights-list" class="card-list empty">
+              <li>No data yet. Generate a brief.</li>
+            </ul>
+          </div>
+
+          <!-- Risks -->
+          <div class="card">
+            <div class="card-header">
+              <span class="card-icon">⚠️</span>
+              <h2>Risks</h2>
+            </div>
+            <ul id="risks-list" class="card-list empty">
+              <li>No data yet.</li>
+            </ul>
+          </div>
+
+          <!-- Recent Escalations -->
+          <div class="card">
+            <div class="card-header">
+              <span class="card-icon">🚨</span>
+              <h2>Recent Escalations</h2>
+            </div>
+            <ul id="escalations-list" class="card-list empty">
+              <li>No data yet.</li>
+            </ul>
+          </div>
+
+          <!-- Open Commitments -->
+          <div class="card">
+            <div class="card-header">
+              <span class="card-icon">✅</span>
+              <h2>Open Commitments</h2>
+            </div>
+            <ul id="commitments-list" class="card-list empty">
+              <li>No data yet.</li>
+            </ul>
+          </div>
+
+          <!-- Citations -->
+          <div class="card citations-card">
+            <div class="card-header">
+              <span class="card-icon">📎</span>
+              <h2>Citations &amp; Sources</h2>
+            </div>
+            <pre id="citations-block" class="citations-pre">No citations yet.</pre>
+          </div>
+        </div>
+      </section>
+
+            <!-- Trends view -->
+      <section id="trends-view" style="display: none;">
+        <header class="page-header">
+          <div>
+            <h1>Trends</h1>
+            <div id="trends-title" class="page-subtitle">
+              Run a few briefs, then see per-account risk & guardrail trends.
+            </div>
+          </div>
+        </header>
+
+        <div id="trends-summary" class="trend-cards"></div>
+
+        <table id="trends-table">
+          <thead>
+            <tr>
+              <th>Account</th>
+              <th>Latest Risk</th>
+              <th>Coverage</th>
+              <th>Guardrails OK%</th>
+              <th>Last Run</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
+
+    <!-- Ask CUE (right column) -->
+    <section class="ask-cue-wrapper">
+      <h3>Ask CUE</h3>
+
+      <div class="ask-panel">
+        <!-- Chat history -->
+        <div id="ask-thread" class="ask-thread">
+          <div class="ask-bubble cue">
+            Hello! I'm here to help you with any questions about this client.
+            Ask me about their risks, trends, or commitments. All answers are
+            grounded in the same evidence as the brief.
+          </div>
+        </div>
+
+        <!-- Input row -->
+        <div class="ask-input-row">
+          <input
+            id="ask-input"
+            type="text"
+            placeholder="Ask a question about this client..."
+            autocomplete="off"
+          />
+          <button id="ask-send" class="ask-send-btn">
+            ▶
+          </button>
+        </div>
+      </div>
+    </section>
+  </div> <!-- end .app-shell -->
+
+  <!-- App JS -->
+  <script src="app.js"></script>
+</body>
+</html>
