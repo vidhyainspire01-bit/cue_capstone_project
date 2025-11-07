@@ -92,19 +92,6 @@ It evolves across iterations:
 
 ---
 
-##  Guardrail Logic (Iteration 2–3)
-
-```mermaid
-flowchart TD
-    Q[User Question] --> S{Sanitize}
-    S -->|Sensitive?| Blocked
-    S --> R[Hybrid Retrieval]
-    R --> E{Evidence Health OK?}
-    E -->|No| Stop[Return "Insufficient Evidence"]
-    E -->|Yes| LLM[Reasoning LLM]
-    LLM --> V{Faithfulness & Diversity Check}
-    V -->|Fail| Halt[Grounding Failed]
-    V -->|Pass| Ans[Answer + Citations + Risk]
 
 
 
